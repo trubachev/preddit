@@ -27,11 +27,11 @@ const SearchView = ({ suggestions, onSubmitSearch, onChangeSearch }) => {
         </div>
       </form>
 
-      <div className={css.suggesions}>
+      <div className={css.suggestions}>
         {suggestions.map((suggestion, index) => (
           <Link href={urls.forR(suggestion)} key={index}>
             <a>
-              <div className={css.suggesion}>{`r/${suggestion}`}</div>
+              <div className={css.suggestion}>{`r/${suggestion}`}</div>
             </a>
           </Link>
         ))}
