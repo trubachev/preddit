@@ -1,0 +1,45 @@
+
+.postContainer {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  &:not(:last-child) {
+    border-bottom: 1px solid #7c7c7c;
+  }
+}
+
+.previewContainer {
+  display: flex;
+  padding-bottom: 6px;
+
+  & > *:not(:last-child) {
+    margin-right: 6px;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.header {
+  padding-bottom: 6px;
+}
+
+.title {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.thumbnail {
+  width: 100px;
+  height: 70px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  flex-shrink: 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}

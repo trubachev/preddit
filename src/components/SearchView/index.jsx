@@ -1,0 +1,42 @@
+import React from "react"
+import { Link } from "wouter"
+
+import { urls } from "~/routes"
+
+import css from "./styles.scss"
+
+const SearchView = ({ suggestions, onSubmitSearch, onChangeSearch }) => {
+  const handleChangeSearch = e => onChangeSearch(e.target.value)
+  const handleSubmitForm = e => {
+    e.preventDefault()
+    onSubmitSearch()
+  }
+
+  return (
+    <div className={css.search}>
+      <form onSubmit={handleSubmitForm}>
+        <div className={css.searchForm}>
+          r/
+          <input
+            type="text"
+            placeholder="subreddit name"
+            onChange={handleChangeSearch}
+          />
+          <button>Go</button>
+        </div>
+      </form>
+
+      <div className={css.suggesions}>
+        {suggestions.map((suggestion, index) => (
+          <Link href={urls.forR(suggestion)} key={index}>
+            <a>
+              <div className={css.suggesion}>{`r/${suggestion}`}</div>
+            </a>
+          </Link>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default SearchView

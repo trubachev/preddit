@@ -1,0 +1,21 @@
+.header {
+  padding-bottom: 6px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+
+.limitControls {
+  display: flex;
+  align-items: center;
+}
+
+.buttons {
+  margin-left: 12px;
+  & > * {
+    margin-right: 6px;
+  }
+}
