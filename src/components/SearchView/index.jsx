@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "wouter"
 
 import { urls } from "~/routes"
+import Button from "~/components/Button"
 
 import css from "./styles.scss"
 
@@ -22,7 +23,7 @@ const SearchView = ({ suggestions, onSubmitSearch, onChangeSearch }) => {
             placeholder="subreddit name"
             onChange={handleChangeSearch}
           />
-          <button>Go</button>
+          <Button>Go</Button>
         </div>
       </form>
 
