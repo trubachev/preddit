@@ -52,27 +52,31 @@ const Title = ({ title, subreddit, entryId }) => (
   </Link>
 )
 
-const EntryPreview = ({ postData }) => (
-  <div className={css.postContainer}>
-    <div className={css.header}>
-      <PostedBy author={postData.author} created={postData.created} />
+const EntryPreview = ({ postData }) => {
+  const hasPreview = postData.thumbnail && postData.thumbnail !== "default"
+
+  return (
+    <div className={css.postContainer}>
+      <div className={css.header}>
+        <PostedBy author={postData.author} created={postData.created} />
+      </div>
+      <div className={css.previewContainer}>
+        {hasPreview && <Thumbnail thumbnail={postData.thumbnail} />}
+        <Title
+          title={postData.title}
+          entryId={postData.id}
+          subreddit={postData.subreddit}
+        />
+      </div>
+      <div className={css.footer}>
+        <Comments commentsCount={postData.num_comments} />
+        <Score score={postData.score} />{" "}
+        <a href={`https://reddit.com${postData.permalink}`} target="_blank">
+          Link <Icon iconName="external-link" />{" "}
+        </a>
+      </div>
     </div>
-    <div className={css.previewContainer}>
-      {postData.thumbnail && <Thumbnail thumbnail={postData.thumbnail} />}
-      <Title
-        title={postData.title}
-        entryId={postData.id}
-        subreddit={postData.subreddit}
-      />
-    </div>
-    <div className={css.footer}>
-      <Comments commentsCount={postData.num_comments} />
-      <Score score={postData.score} />{" "}
-      <a href={`https://reddit.com${postData.permalink}`} target="_blank">
-        Link <Icon iconName="external-link" />{" "}
-      </a>
-    </div>
-  </div>
-)
+  )
+}
 
 export default EntryPreview

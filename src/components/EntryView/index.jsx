@@ -18,7 +18,7 @@ const Preview = ({ preview }) => (
   <div>
     <img
       className={css.preview}
-      src={decodeHtml(preview.images[0].resolutions[3].url)}
+      src={decodeHtml(preview.images[0].resolutions[2].url)}
     />
   </div>
 )

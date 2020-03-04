@@ -2,10 +2,16 @@ const path = require("path")
 const CompressionPlugin = require("compression-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const CopyPlugin = require("copy-webpack-plugin")
+const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 
 const isProduction = process.env.NODE_ENV === "production"
 
+const outputDir = path.resolve(__dirname, "dist")
+
+
 const plugins = [
+  new CleanWebpackPlugin(),
   new HtmlWebpackPlugin({
     template: path.resolve(__dirname, "src", "index.ejs")
   }),
@@ -15,8 +21,8 @@ const plugins = [
       filename: "[name].css",
       chunkFilename: "[id].css",
       ignoreOrder: false
-    })
-
+    }),
+  isProduction && new CopyPlugin([{ from: "netlify.toml", to: outputDir }])
 ].filter(Boolean)
 
 const cssLoaders = [
@@ -43,7 +49,7 @@ module.exports = {
   output: {
     filename: "bundle.js",
     publicPath: "/",
-    path: path.resolve(__dirname, "dist")
+    path: outputDir
   },
   resolve: {
     extensions: [".js", ".jsx", ".scss", ".css"],
